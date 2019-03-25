@@ -1,0 +1,81 @@
+#meizu-header-logo {
+  float: left;
+  padding: 28px 0;
+}
+
+#meizu-header-logo a {
+  display: block;
+  width: 125px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#meizu-header-logo a svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: #fff;
+}
+
+#lunbo {
+  width: 100%;
+  position: relative;
+  height: 400px;
+  margin: auto;
+}
+
+#lunbo img {
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+}
+
+#lunbo img:first-child {
+  opacity: 1;
+}
+
+#lunbo-span {
+  width: 500px;
+  padding: 0 10px;
+  height: 25px;
+  position: absolute;
+  z-index: 20;
+  left: 50%;
+  margin-left: -250px;
+  bottom: 20px;
+  text-align: center;
+}
+
+#lunbo-span span {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  display: inline-block;
+  zoom: 1;
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  margin: 5px 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#lunbo-span .lunbo-span-action, #lunbo-span span:hover {
+  margin: 3px 6px;
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+
+#nav {
+  width: 100%;
+  position: absolute;
+}
+
+#nav nav {
+  margin: 0 auto;
+}
+/*# sourceMappingURL=index.css.map */
