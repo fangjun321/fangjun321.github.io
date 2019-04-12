@@ -1,0 +1,87 @@
+magnificent.js是一款响应式jQuery图片放大镜插件。该图片放大镜插件提供2种图片缩放模式：图片内部缩放和图片外部缩放。并且可以在图片上使用鼠标滚轮来对图片进行局部缩放。
+
+引入
+jquery.mousewheel.js：用于鼠标滚动局部缩放或移动touchpad-pinch缩放。
+jquery.event.drag.js：用于拖放交互。
+screenfull.js：用于全屏显示。
+hammer.js：用于移动触摸交互（平移或pinch）。
+PreventGhostClick.js：用于移动触摸交互（平移或pinch）
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/jquery-bridget/jquery.bridget.js"></script>
+<script src="bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="bower_components/jquery.threedubmedia/event.drag/jquery.event.drag.js"></script>
+<script src="bower_components/screenfull/dist/screenfull.js"></script>
+<script src="bower_components/hammerjs/hammer.js"></script>
+<script src="bower_components/prevent-ghost-click/PreventGhostClick.js"></script> 
+
+
+---------------------------
+然后需要调用插件本身需要的文件：
+<script src="bower_components/magnificent/src/js/mag-analytics.js"></script>
+<script src="bower_components/magnificent/src/js/mag.js"></script>
+<script src="bower_components/magnificent/src/js/mag-jquery.js"></script>
+<script src="bower_components/magnificent/src/js/mag-control.js"></script>
+<link rel="stylesheet" href="bower_components/magnificent/src/css/mag.css" />
+<link rel="stylesheet" href="bower_components/magnificent/src/theme/default.css" />          
+
+
+--------------------
+html
+图片内部放大镜的HTML结构为：
+<div mag-thumb="inner">
+  <img src="img/alley/500x300.jpg" />
+</div>
+<div mag-zoom="inner">
+  <img src="img/alley/1000x600.jpg" />
+</div>       
+
+
+图片外部放大镜的HTML结构为：
+<div mag-thumb="outer">
+  <img src="img/alley/500x300.jpg" />
+</div>
+<div style="width: 300px; height: 300px;">
+  <div mag-zoom="outer">
+    <img src="img/alley/1000x600.jpg" />
+  </div>
+</div>         
+
+
+------------------------------------------
+js
+
+初始化图片内部放大镜：
+$host = $('[mag-thumb="inner"]');
+$host.mag();                  
+初始化图片外部放大镜：
+$host = $('[mag-thumb="outer"]');
+$host.mag({
+  mode: 'outer',
+  ratio: 1 / 1.6
+});                
+
+
+-----------------
+配置参数
+mode：放大镜的模式。可选值有："inner"和"outer"。
+position：指定缩放交互区域的位置。
+"mirror"：默认值。缩放区域跟随鼠标位置。
+"drag"：拖动移动。
+"joystick"：Weird joystick交互。
+false：No mouse/touch。
+positionEvent：定位的事件。
+"move"：默认值。鼠标移动。
+"hold"：按住鼠标。
+theme：主题。默认值为"default"。
+initialShow：是否显示缩略图，如“inner”模式。默认为"thumb"。
+zoomRate：是否的比例，值从0到∞，默认值为0.2。
+zoomMin：允许的最小缩放等级。值从0到∞，默认值为2。
+zoomMax：允许的最大缩放等级。值从0到∞，默认值为10。
+ratio：外部容器和内部容器的比例，默认值为1。
+constrainLens：是否约束放大镜的位置。默认值为true。
+constrainZoomed：是否约束缩放区域。默认值为false。
+toggle：Whether toggle display of zoomed vs. thumbnail upon interaction.Default = true.
+smooth：缩放区域是否逐渐接近目标，而不是立刻（平滑过渡）。默认为true。
+cssMode：缩放和转换的CSS模式，是3D还是2D，默认为3D。
+initial：初始化模式-focus, lens, zoom等。

@@ -1,0 +1,113 @@
+jsPanel是一款可以拖拽和最大化最小化的多功能浮动面板jQuery插件。该面板使用了jQuery UI的功能，它可以BootstrapFoundation框架结合使用，功能非常强大。
+该面板可以作为浮动面板，可拖拽面板，可缩放面板，模态窗口，提示对话框来使用。通过配置参数可以在顶部或底部设置面板工具栏。它支持从右向左的文字书写，支持13种不同的主题效果。
+
+jsPanel要求jQuery2.0以上版本，jQuery UI ≥ 1.9.2（建议使用1.11.4版本），jQuery UI Touch Punch用于移动触摸的支持。
+
+
+html
+-----------------------------------------------
+如有需要范围，可指定，在参数内传入选择器即可
+
+js
+------------------------------------------------
+可以通过$.jsPanel();方法来创建一个最基本的jsPanel面板。
+$.jsPanel();  
+
+
+
+默认参数
+-------------------------------------------------
+jsPanel浮动面板插件的默认配置参数如下：
+$.jsPanel.defaults = {
+    "autoclose": false,
+    "border": false,
+    "callback": false,
+    "container": 'body',
+    "content": false,
+    "contentAjax": false,
+    "contentIframe": false,
+    "contentOverflow": 'hidden',
+    "contentSize": {
+        width: 400,
+        height: 200
+    },
+    "custom": false,
+    "dblclicks": false,
+    "draggable": {
+        handle: 'div.jsPanel-hdr, div.jsPanel-ftr',
+        opacity: 0.8
+    },
+    "footerToolbar": false
+    "headerControls": {
+        buttons: true,
+        iconfont: 'jsglyph',
+        close: false,
+        maximize: false,
+        minimize: false,
+        normalize: false,
+        smallify: false
+    },
+    "headerRemove": false,
+    "headerTitle": 'jsPanel',
+    "headerToolbar": false,
+    "id": () => `jsPanel-${jsPanel.ID += 1}`,
+    "maximizedMargin": {
+        top: 5,
+        right: 5,
+        bottom: 5,
+        left: 5
+    },
+    "onbeforeclose": false,
+    "onbeforemaximize": false,
+    "onbeforeminimize": false,
+    "onbeforenormalize": false,
+    "onclosed": false,
+    "onmaximized": false,
+    "onminimized": false,
+    "onnormalized": false,
+    "onfronted": false,
+    "paneltype": false,
+    "position": {
+        elmt: jsP,
+        my: 'center',
+        at: 'center'
+    },
+    "resizable": {
+        handles: 'n, e, s, w, ne, se, sw, nw',
+        autoHide: false,
+        minWidth: 40,
+        minHeight: 40
+    },
+    "rtl": false,
+    "setstatus": false,
+    "show": false,
+    "template": false,
+    "theme": 'bluegrey'
+};
+ 
+// deviating defaults for modal jsPanels
+$.jsPanel.modaldefaults = {
+    "draggable": "disabled",
+    "headerControls": {buttons: "closeonly"},
+    "position": {
+        my: 'center',
+        at: 'center'
+    },
+    "resizable": "disabled",
+};
+ 
+// deviating defaults for jsPanel tooltips
+$.jsPanel.tooltipdefaults = {
+    "draggable": "disabled"
+    "headerControls": {buttons: "closeonly"},
+    "position": {fixed: false},
+    "resizable": "disabled",
+};
+ 
+// deviating defaults for jsPanel hints
+$.jsPanel.hintdefaults = {
+    "autoclose": 8000,
+    "draggable": "disabled"
+    "headerControls": {buttons: "closeonly"},
+    "resizable": "disabled",
+};                  

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    div{
+      width:500px;
+      height:500px;
+      border: 1px solid #aaa;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="drag"></div>
+<div id="list2"></div>
+<p><input type="file" id="files2" accept="image/*" multiple></p>
+<div id="preview2"></div>
+
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<!--<script src="js/drag.js"></script>-->
+<!--<script src="js/jquery.dnd.js"></script>-->
+<script>
+
+  function isSupportFileApi() {
+    if(window.File && window.FileList && window.FileReader && window.Blob) {
+      return true;
+    }
+    return false;
+  }
+  function checkFileApi() {
+    if(isSupportFileApi()) {
+      alert('支持File Api!');
+      return;
+    }
+    alert('不支持File Api!');
+  }
+
+
+/////////////////////////////////////
+
+
+  var html = [];
+  function dropHandler(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    var files = e.dataTransfer.files;
+    for(var i = 0, len = files.length; i < len; i++) {
+      var f = files[i];
+      html.push(
+        '<p>',
+        f.name + '(' + (f.type || "n/a") + ')' + ' - ' + f.size + 'bytes',
+        '</p>'
+      );
+    }
+    document.getElementById('list2').innerHTML = html.join('');
+  }
+  function dragOverHandler(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    e.dataTransfer.dragEffect = 'copy';
+  }
+  var drag = document.getElementById('drag');
+  drag.addEventListener('drop', dropHandler, false);
+  drag.addEventListener('dragover', dragOverHandler, false);
+
+//////////////////////////////////////////////////////////
+
+  (function() {
+    function fileSelect2(e) {
+      e = e || window.event;
+      var files = this.files;
+      var p = document.getElementById('preview2');
+
+      for(var i = 0, f; f = files[i]; i++) {
+        var reader = new FileReader();
+        reader.onload = (function(file) {
+          return function(e) {
+            var span = document.createElement('span');
+            span.innerHTML = '<img style="padding: 0 10px;" width="100" src="'+ this.result +'" alt="'+ file.name +'" />';
+
+            p.insertBefore(span, null);
+          };
+        })(f);
+        //读取文件内容
+        reader.readAsDataURL(f);
+      }
+    }
+    if(isSupportFileApi()) {
+      document.getElementById('files2').addEventListener('change', fileSelect2, false);
+    }
+  })();
+
+
+
+
+</script>
+</body>
+</html>

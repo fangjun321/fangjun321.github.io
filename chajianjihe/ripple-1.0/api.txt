@@ -1,0 +1,5 @@
+/**使用说明
+/*1.导入文件ripple.js、ripple.css
+/*2.修改ripple.css注释下水波效果片段代码
+/*3.在js中引入$(this).ripple("选择器");
+/**

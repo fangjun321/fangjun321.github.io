@@ -1,0 +1,50 @@
+//****************
+//****1引入
+
+在页面中引入anime.min.js文件。
+<script type="text/javascript" src="js/anime.min.js"></script>            
+
+
+//****************
+//****2HTML
+
+
+<article>
+  <div class="blue"></div>
+  <div class="green"></div>
+</article>
+
+
+
+//****************
+//****3初始化插件
+
+通过anime()方法来构造一个对象实例，以json对象的方式传入需要的参数：
+var myAnimation = anime({
+  targets: ['.blue', '.green'],
+  translateX: '13rem',
+  rotate: 180,
+  borderRadius: 8,
+  duration: 2000,
+  loop: true
+});
+
+
+
+
+//****************
+//****4配置参数
+
+anime.js动画库插件的可用配置参数有：
+参数	默认值	取值
+delay	0	number, function (el, index, total)
+duration	1000	number, function (el, index, total)
+autoplay	true	boolean
+loop	false	number, boolean
+direction	'normal'	'normal', 'reverse', 'alternate'
+easing	'easeOutElastic'	console log anime.easings to get the complete functions list
+elasticity	400	number (higher is stronger)
+round	false	number, boolean
+begin	undefined	function (animation)
+update	undefined	function (animation)
+complete	undefined	function (animation)

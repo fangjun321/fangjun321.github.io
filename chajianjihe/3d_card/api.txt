@@ -1,0 +1,32 @@
+引用文件
+jquery.js
+face-cursor.js
+
+
+html结构
+使用div作为容器，内部可放置图片文字内容
+<div class="card">
+    <h2>Content</h2>
+    <img src="img/27.jpg"/>
+</div>
+<div class="card">
+    <h2>More content</h2>
+    <p>......</p>
+</div>   
+
+
+
+js
+
+在页面DOM元素加载完毕之后，可以通过faceCursor()方法来初始化该视觉差插件。
+$(".card").faceCursor({
+  // 配置参数
+});  
+
+配置参数
+avertCursor：元素是面向鼠标，还是朝向鼠标。
+perspective：CSS 3D transform的透视度。
+cacheElementData：是否缓存元素的宽度、高度和偏移值，而不是每一帧都去计算。如果元素是来回移动的，或者你希望在浏览器尺寸改变时效果持续不变，设置该参数为false。
+
+销毁
+$elements.data("plugin_faceCursor").destroy();  

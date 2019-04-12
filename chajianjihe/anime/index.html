@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>anime.js</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+	<style type="text/css">
+		* {
+		  box-sizing: border-box;
+		}
+
+		html,
+		body {
+			background: #18212D;
+		}
+
+		body {
+		  position: absolute;
+		  display: flex;
+		  flex-direction: column;
+		  width: 100%;
+		  height: 100%;
+		  padding: 1rem;
+		  color: white;
+		  -webkit-font-smoothing: antialiased;
+		}
+
+		section {
+		  display: flex;
+		  flex-direction: column;
+			position: relative;
+		  width: 100%;
+			max-width: 18rem;
+		  margin: auto;
+		  text-align: center;
+		}
+
+		h1 {
+		  margin-bottom: 1rem;
+		  font-size: 1.5rem;
+		}
+
+		article {
+		  display: flex;
+		  flex-direction: column;
+		  position: relative;
+		  width: 100%;
+		  min-height: 8rem;
+		  margin-bottom: 1rem;
+		  padding: 1rem;
+		}
+
+		.red {
+		  background-color: #FF324A;
+		}
+
+		.green {
+		  background-color: #31FFA6;
+		}
+
+		.blue {
+		  background-color: #206EFF;
+		}
+
+		.yellow {
+		  background-color: #FFFF99;
+		}
+		
+		.progress {
+		  width: 82%;
+		  margin-bottom: 1rem;
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+		div.blue,div.green,div.red,div.yellow {
+		  
+		  width: 2.5rem;
+		  height: 2.5rem;
+		  margin-top: auto;
+		  margin-bottom: auto;
+		}
+		.div5.green{
+		  position:absolute;
+		  top: .5rem;
+		  left: .5rem;
+		  width: 1rem;
+		  height: 1rem;
+		}
+		.hide{
+		  display:none;
+		}
+	</style>
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<h1>anime.js-强大的Javascript动画库插件 <span>A Javascript Animation Engine</span></h1>
+			<div class="htmleaf-demo center">
+			  <a data-k="0" href="#" class="current">基本动画</a>
+			  <a data-k="1" href="#">多个timing值</a>
+			  <a data-k="2" href="#">指定目标值</a>
+			  <a data-k="3" href="#">动画控制</a>
+			  <a data-k="4" href="#">动画路径</a>
+			</div>
+		</header>
+		<!--第1部分-->
+		<section>
+		  <article class="green">
+		    <div class="div1 blue"></div>
+		  </article>
+		</section>
+		<!--第2部分-->
+		<section class="hide">
+		  <article>
+		    <div class="div2 green"></div>
+		    <div class="div2 blue"></div>
+		    <div class="div2 red"></div>
+		  </article>
+		</section>
+		<!--第3部分-->
+		<section class="hide">
+		  <article>
+		    <div class="div3 green"></div>
+		    <div class="div3 blue"></div>
+		    <div class="div3 red"></div>
+		  </article>
+		</section>
+		<!--第4部分-->
+		<section class="hide">
+		  <article>
+		    <div class="div4 blue"></div>
+		    <div class="div4 green"></div>
+		    <div class="div4 red"></div>
+		  </article>
+		    <input class="progress" type="range" value="0" min="0" max="100"></input>
+		  <fieldset>
+		    <button class="play">Play</button>
+		    <button class="pause">Pause</button>
+		    <button class="restart">Restart</button>
+		  </fieldset>
+		</section>
+		<!--第5部分-->
+		<section class="hide">
+		  <article>
+		    <svg width="256" height="112" viewBox="0 0 256 112">
+		      <path fill="none" stroke="#FFF" d="M8,56 C8,33.90861 25.90861,16 48,16 C70.09139,16 88,33.90861 88,56 C88,78.09139 105.90861,92 128,92 C150.09139,92 160,72 160,56 C160,40 148,24 128,24 C108,24 96,40 96,56 C96,72 105.90861,92 128,92 C154,93 168,78 168,56 C168,33.90861 185.90861,16 208,16 C230.09139,16 248,33.90861 248,56 C248,78.09139 230.09139,96 208,96 L48,96 C25.90861,96 8,78.09139 8,56 Z"/>
+		    </svg>
+		    <div class="div5 green"></div>
+		  </article>
+		</section>
+	</div>
+	
+	<script type="text/javascript" src="js/anime.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+	$("a").on("click",function(){
+		$("a").removeClass("current");
+		$(this).addClass("current");
+		$("section").hide(300);
+		$("section:eq("+$(this).data("k")+")").slideDown(300);
+	})
+	//*************
+	//**        1
+		anime({
+		    targets: '.div1',
+		    translateX: '13rem',
+		    rotate: {
+		        value: 180,
+		        duration: 1500,
+		        easing: 'easeInOutQuad'
+		    },
+		    scale: {
+		        value: 2,
+		        delay: 150,
+		        duration: 850,
+		        easing: 'easeInOutExpo'
+		    },
+		    loop: true,
+		    direction: 'alternate'
+		});
+	//*************
+	//**        2
+		anime({
+		    targets: '.div2',
+		    translateX: '13.5rem',
+		    scale: [
+		        0.75,
+		        0.9
+		    ],
+		    delay: function (el, index) {
+		        return index * 80;
+		    },
+		    direction: 'alternate',
+		    loop: true
+		});
+	//*************
+	//**        3
+	anime({
+		    targets: '.div3',
+		    translateX: function () {
+		        return anime.random(10, 14) + 'rem';
+		    },
+		    scale: function () {
+		        return anime.random(10, 20) / 10;
+		    },
+		    rotate: function () {
+		        return anime.random(-360, 360);
+		    },
+		    duration: function () {
+		        return anime.random(1000, 2000);
+		    },
+		    direction: 'alternate',
+		    loop: true
+		});
+	//*************
+	//**        4
+	var playButton = document.querySelector('.play');
+		var pauseButton = document.querySelector('.pause');
+		var restartButton = document.querySelector('.restart');
+		var progress = document.querySelector('.progress');
+		var myAnimation = anime({
+		    targets: '.div4',
+		    translateX: function () {
+		        return anime.random(10, 14) + 'rem';
+		    },
+		    scale: function () {
+		        return anime.random(10, 20) / 10;
+		    },
+		    rotate: function () {
+		        return anime.random(-360, 360);
+		    },
+		    duration: function () {
+		        return anime.random(800, 1400);
+		    },
+		    loop: true,
+		    easing: 'easeOutQuad',
+		    update: function (animation) {
+		        progress.value = animation.progress;
+		    }
+		});
+		playButton.addEventListener('click', function () {
+		    myAnimation.play();
+		});
+		pauseButton.addEventListener('click', function () {
+		    myAnimation.pause();
+		});
+		restartButton.addEventListener('click', function () {
+		    myAnimation.restart();
+		});
+		progress.addEventListener('input', function () {
+		    myAnimation.seek(progress.value);
+		});
+	//*************
+	//**        5
+	var path = anime.path('path');
+		anime({
+		    targets: '.div5',
+		    translateX: path,
+		    translateY: path,
+		    rotate: path,
+		    duration: 3000,
+		    loop: true,
+		    easing: 'linear'
+		});
+		anime({
+		    targets: 'path',
+		    opacity: 0,
+		    duration: 6000,
+		    loop: true,
+		    direction: 'alternate',
+		    easing: 'easeInOutExpo'
+		});
+		
+		</script>
+</body>
+</html>

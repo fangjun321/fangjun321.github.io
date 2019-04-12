@@ -1,0 +1,11 @@
+引入
+<link rel="stylesheet" href="loaders.css">
+<-- 或者 -->
+<link rel="stylesheet" href="loaders.min.css"> 
+
+
+
+html
+
+该Loading加载指示器的HTML结构非常简单，使用一个<div>元素作为容器，并为它添加data-loader属性。
+<div data-loader="circle"></div> 

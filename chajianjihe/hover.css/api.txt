@@ -1,0 +1,26 @@
+Hover.css是一款非常简单实用的纯CSS3鼠标滑过特效动画库。有100多种效果可以选择，包括：2D动画、背景动画、边框动画、图标动画、发光渐变、阴影、对话框、折角等100多种特效。
+
+引入
+<link href="css/hover.css" rel="stylesheet" media="all">
+
+html
+--------------------------------------------
+找到你效果要添加的鼠标滑过效果的class名称，然后将它加入到按钮的class中即可。
+<a href="#" class="button hvr-float">Checkout</a>
+
+
+
+
+默认参数
+---------------------------------------------
+深入了解Hover.css中的一些hack技术
+所有的hover.css效果都使用一些不影响效果的CSS属性来制作，有时候你可能会需要去修改这些CSS属性，下面来看一下一些特殊的地方。
+display: inline-block
+
+每一种效果要正常工作需要设置一个dispaly属性。默认情况下，Hover.css将所有的元素都设置为display: inline-block。你可以根据需要将它修改为display: block或display: inline。如果你使用的元素已经有了dispaly属性，那么效果中的display不会覆盖你原有的display。
+transform: translateZ(0)
+
+transform: translateZ(0)是一个总所周知的“性能hack”。它通常和CSS3 transforms一起使用来提高移动手机和平板的transforms 效果。
+box-shadow: 0 0 1px rgba(0, 0, 0, 0)
+
+当在移动手机和平板上观察CSS3 transformed效果时，边缘有时看起来有锯齿状或稍有不同的颜色。通过使用box-shadow: 0 0 1px rgba(0, 0, 0, 0)，可以为元素使用透明的阴影效果，这样会使边部看起来十分的平滑。

@@ -1,0 +1,45 @@
+引入
+style.css
+
+
+html
+------------------------------------------------------
+该手机导航菜单的基本HTML结构如下：其中div.iphone__screen中的内容是导航菜单的内容。其它部分都是辅助元素，用于绘制手机的外观。
+
+<div class="iphone style-1">
+  <div class="iphone__item">#1</div>
+  <div class="iphone__power-btn"></div>
+  <div class="iphone__left-btn"></div>
+  <div class="iphone__details"></div>
+  <div class="iphone__screen">
+    <a href="#" class="nav__trigger"><span class="nav__icon"></span></a>
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="#">Home</a></li>
+        <li class="nav__item"><a class="nav__link" href="#">About Us</a></li>
+        <li class="nav__item"><a class="nav__link" href="#">Portfolio</a></li>
+        <li class="nav__item"><a class="nav__link" href="#">Blog</a></li>
+        <li class="nav__item"><a class="nav__link" href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="iphone__content"></div>  
+  </div>
+  <div class="iphone__home-btn"></div>
+</div>       
+
+---------------------------------------------
+css   
+汉堡包导航菜单按钮使用<span>元素，以及它的:before和:after伪元素来制作。并且为它们的background-color属性和transform设置了300毫秒动画过渡效果。
+
+
+
+
+-----------------------------------------------
+js
+点击汉堡包按钮，切换父元素相应类
+$(function(){
+  $('.nav__trigger').on('click', function(e){
+    e.preventDefault();
+    $(this).parent().toggleClass('nav--active');
+  });
+})    

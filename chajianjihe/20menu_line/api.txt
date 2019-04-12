@@ -1,0 +1,81 @@
+引入
+component.css--------可选择相应效果代码
+classie.js
+clipboard.min.js
+
+
+html
+------------------------------------------------------------
+id是当前效果
+
+
+<section class="section section--menu" id="Prospero">
+ 
+  <h2 class="section__title">Prospero</h2>
+ 
+  <nav class="menu menu--prospero">
+ 
+    <ul class="menu__list">
+      <li class="menu__item menu__item--current">
+        <a class="menu__link">Home</a>
+      </li>
+      <li class="menu__item">
+        <a class="menu__link">Who we are</a>
+      </li>
+      <li class="menu__item">
+        <a class="menu__link">What we offer</a>
+      </li>
+      <li class="menu__item">
+        <a class="menu__link">Our news</a>
+      </li>
+      <li class="menu__item">
+        <a class="menu__link">Contact us</a>
+      </li>
+    </ul>
+     
+  </nav>
+ 
+</section>   
+
+----------------------------------------
+
+
+js
+
+原生代码，通过classie.js封装的类简单增删改CSS中的类。
+
+
+(function() {
+    [].slice.call(document.querySelectorAll('.menu')).forEach(function(menu) {
+      var menuItems = menu.querySelectorAll('.menu__link'),
+        setCurrent = function(ev) {
+          ev.preventDefault();
+
+          var item = ev.target.parentNode; // li
+
+          // return if already current
+          if( classie.has(item, 'menu__item--current') ) {
+            return false;
+          }
+          // remove current
+          classie.remove(menu.querySelector('.menu__item--current'), 'menu__item--current');
+          // set current
+          classie.add(item, 'menu__item--current');
+        };
+
+      [].slice.call(menuItems).forEach(function(el) {
+        el.addEventListener('click', setCurrent);
+      });
+    });
+
+    [].slice.call(document.querySelectorAll('.link-copy')).forEach(function(link) {
+      link.setAttribute('data-clipboard-text', location.protocol + '//' + location.host + location.pathname + '#' + link.parentNode.id);
+      new Clipboard(link);
+      link.addEventListener('click', function() {
+        classie.add(link, 'link-copy--animate');
+        setTimeout(function() {
+          classie.remove(link, 'link-copy--animate');
+        }, 300);
+      });
+    });
+  })(window);

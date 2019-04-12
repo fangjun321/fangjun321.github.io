@@ -1,0 +1,14 @@
+//***************************
+1引入Jquery  与gantetu.js
+
+
+
+//***************************
+2html
+<div id="chart">
+<canvas id="cvs"></canvas>
+</div>
+给canvas加父元素  id设为chart    ，canvas会自适应父元素宽高
+
+//****************************
+3 js 有详细的注释
